@@ -1,20 +1,36 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title>Pokédex</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" *ngFor="let pokemon of pokemons">
+        <ion-card (click)="goToDetail(pokemon.name)">
+          <img [src]="pokemon.image" alt="{{ pokemon.name }}" />
+          <ion-card-header>
+            <ion-card-title>{{ pokemon.name | titlecase }}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-list>
+              <ion-item *ngFor="let stat of pokemon.stats">
+                <ion-label>
+                  {{ stat.name | uppercase }}: {{ stat.value }}
+                </ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-infinite-scroll (ionInfinite)="loadPokemons($event)" threshold="100px">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Cargando más Pokémon...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>
