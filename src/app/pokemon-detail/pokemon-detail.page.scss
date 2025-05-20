@@ -1,179 +1,145 @@
-/* ESTILOS POKÉDEX - DETALLE ÉPICO */
+/* pokemon-detail.page.scss */
 ion-content {
-  --background: #121212 no-repeat center/cover;
-  --color: #fff;
+  --background: #121212;
+  --color: #ffffff;
 }
 
 ion-toolbar {
-  --background: linear-gradient(to right, #e71d1d, #b71c1c);
-  --color: white;
-  position: relative;
+  --background: #000000;
+  --color: #ffffff;
   
-  ion-title {
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  ion-back-button {
+    --color: #ff3d3d;
   }
 }
 
-ion-back-button {
-  --color: white;
-  --background-hover: rgba(255, 255, 255, 0.1);
-}
-
-/* Tarjeta principal estilo Pokédex */
 ion-card {
-  background: rgba(30, 30, 30, 0.9);
-  border-radius: 20px;
-  border: 4px solid #e71d1d;
-  box-shadow: 
-    0 0 20px rgba(231, 29, 29, 0.5),
-    0 10px 30px rgba(0, 0, 0, 0.8);
+  --background: #1e1e1e;
+  margin: 16px;
+  border-radius: 16px;
   overflow: hidden;
-  backdrop-filter: blur(5px);
-  transition: all 0.3s ease;
-
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 
-      0 0 30px rgba(231, 29, 29, 0.7),
-      0 15px 40px rgba(0, 0, 0, 0.9);
-  }
-}
-
-/* Imagen del Pokémon con efecto brillante */
-img {
-  display: block;
-  margin: 0 auto;
-  height: 200px;
-  width: auto;
-  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.5));
-  transition: all 0.3s ease;
-  background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
-  padding: 20px;
-
-  &:hover {
-    transform: scale(1.05);
-    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.7));
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  
+  img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    background: linear-gradient(135deg, rgba(255, 61, 61, 0.1) 0%, rgba(30, 30, 30, 1) 100%);
+    padding: 20px;
   }
 }
 
 ion-card-header {
-  background: linear-gradient(to right, rgba(231, 29, 29, 0.7), rgba(183, 28, 28, 0.9));
-  padding: 15px;
-  text-align: center;
-  border-bottom: 2px solid #fff;
-
+  padding-bottom: 0;
+  
   ion-card-title {
     font-size: 1.8rem;
-    font-weight: 800;
-    letter-spacing: 2px;
-    color: white;
-    text-shadow: 
-      2px 2px 0 #000,
-      4px 4px 0 rgba(0, 0, 0, 0.3);
+    color: #ff3d3d;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 1px;
   }
 }
 
 ion-card-content {
-  padding: 20px;
+  h3 {
+    color: #ff3d3d;
+    font-size: 1.2rem;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 61, 61, 0.3);
+    padding-bottom: 5px;
+  }
 }
 
-/* Secciones con estilo de terminal */
-h3 {
-  color: #e71d1d;
-  font-size: 1.3rem;
-  font-weight: 700;
-  margin: 20px 0 10px;
-  border-bottom: 2px solid #e71d1d;
-  padding-bottom: 5px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-}
-
-/* Chips de tipos con colores según tipo */
 ion-chip {
-  margin: 5px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  border: 2px solid white;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-
-  /* Colores según tipo de Pokémon */
-  &[color="normal"] { --background: #A8A878; }
-  &[color="fire"] { --background: #F08030; }
-  &[color="water"] { --background: #6890F0; }
-  &[color="electric"] { --background: #F8D030; --color: #000; }
-  &[color="grass"] { --background: #78C850; }
-  &[color="ice"] { --background: #98D8D8; }
-  &[color="fighting"] { --background: #C03028; }
-  &[color="poison"] { --background: #A040A0; }
-  &[color="ground"] { --background: #E0C068; }
-  &[color="flying"] { --background: #A890F0; }
-  &[color="psychic"] { --background: #F85888; }
-  &[color="bug"] { --background: #A8B820; }
-  &[color="rock"] { --background: #B8A038; }
-  &[color="ghost"] { --background: #705898; }
-  &[color="dragon"] { --background: #7038F8; }
-  &[color="dark"] { --background: #705848; }
-  &[color="steel"] { --background: #B8B8D0; }
-  &[color="fairy"] { --background: #EE99AC; }
+  --background: rgba(255, 61, 61, 0.2);
+  --color: #ff3d3d;
+  margin: 4px;
+  font-weight: 500;
+  border: 1px solid rgba(255, 61, 61, 0.3);
 }
 
-/* Lista de stats con barras de progreso */
 ion-list {
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
-  padding: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-
+  background: transparent;
+  padding: 0;
+  
   ion-item {
     --background: transparent;
     --padding-start: 0;
     --inner-padding-end: 0;
-    --border-color: rgba(255, 255, 255, 0.1);
-
+    --border-color: rgba(255, 61, 61, 0.1);
+    
     ion-label {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      &::after {
-        content: '';
-        display: block;
-        height: 10px;
-        background: linear-gradient(to right, #e71d1d, #ffcc00);
-        border-radius: 5px;
-        margin-left: 10px;
-        flex-grow: 1;
-        max-width: 60%;
-        box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
-      }
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+    }
+    
+    &:last-child {
+      --border-color: transparent;
     }
   }
 }
 
-/* Animación de carga */
-.loading {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 300px;
-
+/* Efecto de carga */
+.skeleton-loader {
+  background: #1e1e1e;
+  border-radius: 16px;
+  margin: 16px;
+  height: 400px;
+  position: relative;
+  overflow: hidden;
+  
   &::after {
     content: '';
-    width: 50px;
-    height: 50px;
-    border: 5px solid rgba(231, 29, 29, 0.3);
-    border-radius: 50%;
-    border-top-color: #e71d1d;
-    animation: spin 1s linear infinite;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 61, 61, 0.1),
+      transparent
+    );
+    animation: loading 1.5s infinite;
   }
 }
 
-@keyframes spin {
-  to { transform: rotate(360deg); }
+@keyframes loading {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Animación de entrada */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+ion-card {
+  animation: slideIn 0.4s ease-out forwards;
+}
+
+/* Responsive para tablets */
+@media (min-width: 576px) {
+  ion-card {
+    max-width: 500px;
+    margin: 24px auto;
+    
+    img {
+      height: 250px;
+    }
+  }
 }
