@@ -143,3 +143,144 @@ ion-card {
     }
   }
 }
+/* Estilos para el área de reseña */
+/* En tu pokemon-detail.page.scss */
+ion-textarea {
+  --background: rgba(30, 30, 30, 0.8);
+  --color: #000000; /* Cambiado de #000000 a #ffffff */
+  --padding-start: 12px;
+  --padding-end: 12px;
+  --padding-top: 8px;
+  --padding-bottom: 8px;
+  --border-radius: 12px;
+  --border-color: rgba(255, 61, 61, 0.3);
+  --border-width: 1px;
+  --border-style: solid;
+  --highlight-color-focused: #ff3d3d;
+  margin-bottom: 16px;
+  transition: all 0.3s ease;
+
+  /* Estilo para el texto ingresado */
+  &::part(textarea) {
+    color: #000000; /* Asegura que el texto sea blanco */
+  }
+
+  &.ion-focused {
+    --border-color: #ff3d3d;
+    --background: rgba(30, 30, 30, 1);
+    box-shadow: 0 0 0 2px rgba(255, 61, 61, 0.2);
+  }
+}
+
+/* Añade esto a tu pokemon-detail.page.scss */
+.custom-textarea {
+  --color: #070707; /* Color del texto */
+  
+  /* Estilo para el texto ingresado */
+  &::part(textarea) {
+    color: var(--color);
+  }
+  
+  /* Estilo para el placeholder */
+  &::part(placeholder) {
+    color: rgba(255, 255, 255, 0.6);
+    font-style: italic;
+  }
+  
+  /* Estilo cuando está enfocado */
+  &.ion-focused {
+    --highlight-color: #ff3d3d;
+  }
+}
+
+/* Estilos para el placeholder */
+ion-textarea::part(placeholder) {
+  color: rgba(255, 255, 255, 0.6);
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+/* Estilos para el botón */
+ion-button {
+  --background: #ff3d3d;
+  --background-activated: #ff1a1a;
+  --background-hover: #ff5252;
+  --color: #ffffff;
+  --border-radius: 12px;
+  --padding-top: 16px;
+  --padding-bottom: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-top: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(255, 61, 61, 0.3);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(255, 61, 61, 0.4);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  /* Estilo cuando está deshabilitado */
+  &[disabled] {
+    --background: rgba(255, 61, 61, 0.3);
+    --color: rgba(255, 255, 255, 0.5);
+    box-shadow: none;
+    transform: none;
+  }
+
+  /* Estilos para el icono */
+  ion-icon {
+    font-size: 1.2rem;
+    margin-right: 8px;
+  }
+
+  /* Estilos para el spinner */
+  ion-spinner {
+    --color: #ffffff;
+    margin-right: 8px;
+  }
+}
+
+/* Efecto de validación para campo requerido */
+ion-item.ion-invalid {
+  ion-textarea {
+    --border-color: #ff3d3d;
+    --background: rgba(255, 61, 61, 0.1);
+  }
+}
+
+/* Mensaje de error (opcional) */
+.error-message {
+  color: #ff3d3d;
+  font-size: 0.8rem;
+  margin-top: -12px;
+  margin-bottom: 16px;
+  padding-left: 12px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Efecto de transición para la sección completa */
+.review-section {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

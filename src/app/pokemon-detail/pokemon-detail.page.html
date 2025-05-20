@@ -32,6 +32,36 @@
           <ion-label>{{ ability.ability.name | titlecase }}</ion-label>
         </ion-item>
       </ion-list>
+
+      <!-- Sección de reseña -->
+        <ion-textarea
+          [(ngModel)]="review"
+          label="Tu reseña sobre este Pokémon"
+          labelPlacement="floating"
+          placeholder="¿Qué te parece este Pokémon?"
+          rows="4"
+          required
+          class="custom-textarea"
+        ></ion-textarea>
+
+      <!-- Botón de guardar -->
+      <ion-button 
+        expand="block" 
+        color="primary" 
+        (click)="savePokemon()"
+        [disabled]="!review || isSaving"
+        class="ion-margin-top"
+      >
+        <ion-spinner *ngIf="isSaving" name="crescent"></ion-spinner>
+        <ion-icon *ngIf="!isSaving" name="save-outline" slot="start"></ion-icon>
+        {{ isSaving ? 'Guardando...' : 'Guardar Pokémon' }}
+      </ion-button>
     </ion-card-content>
   </ion-card>
+
+  <!-- Spinner de carga inicial -->
+  <div *ngIf="loading" class="ion-text-center ion-padding">
+    <ion-spinner name="crescent"></ion-spinner>
+    <p>Cargando información del Pokémon...</p>
+  </div>
 </ion-content>
