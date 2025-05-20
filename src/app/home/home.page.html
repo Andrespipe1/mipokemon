@@ -1,15 +1,28 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Pokédex</ion-title>
+    <ion-searchbar 
+      slot="end"
+      [(ngModel)]="searchTerm"
+      (ionInput)="search($event)"
+      placeholder="Buscar Pokémon..."
+      debounce="500"
+      class="search-bar"
+    ></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
+  <!-- Mostrar mensaje si no hay resultados -->
+  <ion-text *ngIf="searchTerm && filteredPokemons.length === 0" color="danger">
+    <p class="ion-text-center">No se encontraron Pokémon con ese nombre</p>
+  </ion-text>
+
   <ion-grid>
     <ion-row>
-      <ion-col size="6" *ngFor="let pokemon of pokemons">
+      <ion-col size="6" *ngFor="let pokemon of filteredPokemons">
         <ion-card (click)="goToDetail(pokemon.name)">
-          <img [src]="pokemon.image" alt="{{ pokemon.name }}" />
+          <img [src]="pokemon.image" alt="{{ pokemon.name }}" class="pebe" />
           <ion-card-header>
             <ion-card-title>{{ pokemon.name | titlecase }}</ion-card-title>
           </ion-card-header>
@@ -27,7 +40,11 @@
     </ion-row>
   </ion-grid>
 
-  <ion-infinite-scroll (ionInfinite)="loadPokemons($event)" threshold="100px">
+  <!-- Ocultar infinite scroll cuando hay una búsqueda activa -->
+  <ion-infinite-scroll 
+    (ionInfinite)="loadPokemons($event)" 
+    threshold="100px"
+    *ngIf="!isSearchingAPI && !searchTerm">
     <ion-infinite-scroll-content
       loadingSpinner="bubbles"
       loadingText="Cargando más Pokémon...">
