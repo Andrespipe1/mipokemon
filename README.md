@@ -1,8 +1,9 @@
-Pokédex App - Ionic/Angular
+<h1>Pokédex App - Ionic/Angular</h1>
 
 Pokédex Demo
 
 Una aplicación móvil de Pokédex desarrollada con Ionic y Angular que muestra información detallada de Pokémon.
+<br>
 🚀 Integrantes
 
     Darwil Cachimil
